@@ -1,0 +1,158 @@
+import { useEffect, useRef } from "react";
+
+const ThreatMap = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    let animId;
+
+    const setSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    setSize();
+    window.addEventListener("resize", setSize);
+
+    const W = () => canvas.width;
+    const H = () => canvas.height;
+
+    const rand = (a, b) => a + Math.random() * (b - a);
+
+    let t = 0;
+    let lastSpawn = 0;
+
+    function drawHUD(time) {
+      const w = W(), h = H();
+
+      // top bar
+      ctx.save();
+      ctx.globalAlpha = 0.85;
+      ctx.fillStyle = "#0a0f0d";
+      ctx.fillRect(0, 0, w, 36);
+      ctx.strokeStyle = "#00ff41";
+      ctx.lineWidth = 0.8;
+      ctx.globalAlpha = 0.4;
+      ctx.beginPath(); ctx.moveTo(0, 36); ctx.lineTo(w, 36); ctx.stroke();
+      ctx.restore();
+
+      ctx.save();
+      ctx.fillStyle = "#00ff41";
+      ctx.font = "bold 11px monospace";
+      ctx.globalAlpha = 0.9;
+      ctx.textAlign = "left";
+      ctx.fillText("⬡ ZYRVEX", 16, 22);
+      ctx.font = "10px monospace";
+      /*ctx.fillStyle = "#ff2222"; ctx.globalAlpha = 0.85;
+      ctx.fillText(`CRITICAL: `, w - 320, 22);
+      ctx.fillStyle = "#ff8800";
+      ctx.fillText(`HIGH: `, w - 220, 22);
+      ctx.fillStyle = "#00ff41"; ctx.globalAlpha = 0.6;
+      ctx.fillText(`ACTIVE: `, w - 130, 22);
+      ctx.restore();*/
+
+      // bottom bar
+      ctx.save();
+      ctx.globalAlpha = 0.85;
+      ctx.fillStyle = "#0a0f0d";
+      ctx.fillRect(0, h - 28, w, 28);
+      ctx.strokeStyle = "#00ff41";
+      ctx.lineWidth = 0.8;
+      ctx.globalAlpha = 0.3;
+      ctx.beginPath(); ctx.moveTo(0, h - 28); ctx.lineTo(w, h - 28); ctx.stroke();
+      ctx.fillStyle = "#00ff41";
+      ctx.font = "9px monospace";
+      ctx.globalAlpha = 0.45;
+      ctx.textAlign = "left";
+      const ts = new Date().toISOString().replace("T", " ").split(".")[0];
+      ctx.fillText(`UTC ${ts}  |  NODES:   |  STATUS: MONITORING`, 16, h - 10);
+      ctx.restore();
+
+      // corner brackets
+      const bL = 20;
+      [[16, 42], [w - 16, 42], [16, h - 32], [w - 16, h - 32]].forEach(([x, y], i) => {
+        ctx.save();
+        ctx.strokeStyle = "#00ff41"; ctx.lineWidth = 1.2; ctx.globalAlpha = 0.35;
+        const sx = i % 2 === 0 ? 1 : -1, sy = i < 2 ? 1 : -1;
+        ctx.beginPath();
+        ctx.moveTo(x, y + sy * bL); ctx.lineTo(x, y); ctx.lineTo(x + sx * bL, y);
+        ctx.stroke(); ctx.restore();
+      });
+
+      // scan line
+      const scanY = 36 + ((time * 55) % (h - 64));
+      ctx.save();
+      const sg = ctx.createLinearGradient(0, scanY - 6, 0, scanY + 6);
+      sg.addColorStop(0, "rgba(0,255,65,0)");
+      sg.addColorStop(0.5, `rgba(0,255,65,${0.04 + 0.02 * Math.sin(time)})`);
+      sg.addColorStop(1, "rgba(0,255,65,0)");
+      ctx.fillStyle = sg;
+      ctx.fillRect(0, scanY - 6, w, 12);
+      ctx.restore();
+    }
+
+    function drawLogs() {
+  const w = W();
+
+  // Draw box
+  ctx.save();
+  ctx.globalAlpha = 0.85;
+  ctx.fillStyle = "rgba(0,10,4,0.7)";
+  ctx.fillRect(w - 260, 46, 244, 160);
+
+  ctx.strokeStyle = "#00ff41";
+  ctx.lineWidth = 0.7;
+  ctx.globalAlpha = 0.3;
+  ctx.strokeRect(w - 260, 46, 244, 160);
+  ctx.restore();
+
+  // Your custom content
+  ctx.save();
+  ctx.fillStyle = "#00ff41";
+  ctx.font = "12px monospace";
+  ctx.fillText("Hello World", w - 250, 80);
+  ctx.fillText("My Custom Content", w - 250, 100);
+  ctx.restore();
+}
+
+    function loop(time) {
+      t = time * 0.001;
+      ctx.clearRect(0, 0, W(), H());
+      ctx.fillStyle = "#0a0f0d";
+      ctx.fillRect(0, 0, W(), H());
+
+      if (t - lastSpawn > rand(1.5, 3.5)) {
+        lastSpawn = t;
+      }
+
+      drawHUD(t);
+      drawLogs();
+      animId = requestAnimationFrame(loop);
+    }
+
+    animId = requestAnimationFrame(loop);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", setSize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: 2,
+        pointerEvents: "none",
+      }}
+    />
+  );
+};
+
+export default ThreatMap;
