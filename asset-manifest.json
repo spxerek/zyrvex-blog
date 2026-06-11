@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/zyrvex-blog/static/css/main.6f2c6252.css",
-    "main.js": "/zyrvex-blog/static/js/main.dc3f1457.js",
+    "main.js": "/zyrvex-blog/static/js/main.f81ec493.js",
     "static/js/344.6a1a5c5e.chunk.js": "/zyrvex-blog/static/js/344.6a1a5c5e.chunk.js",
     "static/js/287.e0d83d3c.chunk.js": "/zyrvex-blog/static/js/287.e0d83d3c.chunk.js",
     "static/js/841.e6a2f358.chunk.js": "/zyrvex-blog/static/js/841.e6a2f358.chunk.js",
@@ -11,7 +11,7 @@
     "static/js/290.a75c88df.chunk.js": "/zyrvex-blog/static/js/290.a75c88df.chunk.js",
     "index.html": "/zyrvex-blog/index.html",
     "main.6f2c6252.css.map": "/zyrvex-blog/static/css/main.6f2c6252.css.map",
-    "main.dc3f1457.js.map": "/zyrvex-blog/static/js/main.dc3f1457.js.map",
+    "main.f81ec493.js.map": "/zyrvex-blog/static/js/main.f81ec493.js.map",
     "344.6a1a5c5e.chunk.js.map": "/zyrvex-blog/static/js/344.6a1a5c5e.chunk.js.map",
     "287.e0d83d3c.chunk.js.map": "/zyrvex-blog/static/js/287.e0d83d3c.chunk.js.map",
     "841.e6a2f358.chunk.js.map": "/zyrvex-blog/static/js/841.e6a2f358.chunk.js.map",
@@ -22,6 +22,6 @@
   },
   "entrypoints": [
     "static/css/main.6f2c6252.css",
-    "static/js/main.dc3f1457.js"
+    "static/js/main.f81ec493.js"
   ]
 }
