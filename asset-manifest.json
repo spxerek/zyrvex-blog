@@ -1,29 +1,27 @@
 {
   "files": {
     "main.css": "/zyrvex-blog/static/css/main.c32ff720.css",
-    "main.js": "/zyrvex-blog/static/js/main.8bf31416.js",
-    "static/js/344.35279c77.chunk.js": "/zyrvex-blog/static/js/344.35279c77.chunk.js",
+    "main.js": "/zyrvex-blog/static/js/main.733c1321.js",
+    "static/js/344.6a1a5c5e.chunk.js": "/zyrvex-blog/static/js/344.6a1a5c5e.chunk.js",
     "static/js/287.e0d83d3c.chunk.js": "/zyrvex-blog/static/js/287.e0d83d3c.chunk.js",
-    "static/js/841.2fa858cc.chunk.js": "/zyrvex-blog/static/js/841.2fa858cc.chunk.js",
-    "static/js/200.a63071a4.chunk.js": "/zyrvex-blog/static/js/200.a63071a4.chunk.js",
+    "static/js/841.e6a2f358.chunk.js": "/zyrvex-blog/static/js/841.e6a2f358.chunk.js",
+    "static/js/200.d51a3592.chunk.js": "/zyrvex-blog/static/js/200.d51a3592.chunk.js",
     "static/js/608.4f4ea9ad.chunk.js": "/zyrvex-blog/static/js/608.4f4ea9ad.chunk.js",
     "static/js/550.9db1e642.chunk.js": "/zyrvex-blog/static/js/550.9db1e642.chunk.js",
-    "static/js/290.f80223be.chunk.js": "/zyrvex-blog/static/js/290.f80223be.chunk.js",
-    "static/js/453.567ce201.chunk.js": "/zyrvex-blog/static/js/453.567ce201.chunk.js",
+    "static/js/290.a75c88df.chunk.js": "/zyrvex-blog/static/js/290.a75c88df.chunk.js",
     "index.html": "/zyrvex-blog/index.html",
     "main.c32ff720.css.map": "/zyrvex-blog/static/css/main.c32ff720.css.map",
-    "main.8bf31416.js.map": "/zyrvex-blog/static/js/main.8bf31416.js.map",
-    "344.35279c77.chunk.js.map": "/zyrvex-blog/static/js/344.35279c77.chunk.js.map",
+    "main.733c1321.js.map": "/zyrvex-blog/static/js/main.733c1321.js.map",
+    "344.6a1a5c5e.chunk.js.map": "/zyrvex-blog/static/js/344.6a1a5c5e.chunk.js.map",
     "287.e0d83d3c.chunk.js.map": "/zyrvex-blog/static/js/287.e0d83d3c.chunk.js.map",
-    "841.2fa858cc.chunk.js.map": "/zyrvex-blog/static/js/841.2fa858cc.chunk.js.map",
-    "200.a63071a4.chunk.js.map": "/zyrvex-blog/static/js/200.a63071a4.chunk.js.map",
+    "841.e6a2f358.chunk.js.map": "/zyrvex-blog/static/js/841.e6a2f358.chunk.js.map",
+    "200.d51a3592.chunk.js.map": "/zyrvex-blog/static/js/200.d51a3592.chunk.js.map",
     "608.4f4ea9ad.chunk.js.map": "/zyrvex-blog/static/js/608.4f4ea9ad.chunk.js.map",
     "550.9db1e642.chunk.js.map": "/zyrvex-blog/static/js/550.9db1e642.chunk.js.map",
-    "290.f80223be.chunk.js.map": "/zyrvex-blog/static/js/290.f80223be.chunk.js.map",
-    "453.567ce201.chunk.js.map": "/zyrvex-blog/static/js/453.567ce201.chunk.js.map"
+    "290.a75c88df.chunk.js.map": "/zyrvex-blog/static/js/290.a75c88df.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c32ff720.css",
-    "static/js/main.8bf31416.js"
+    "static/js/main.733c1321.js"
   ]
 }
