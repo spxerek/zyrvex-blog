@@ -11,7 +11,14 @@ const writeupsIndex = {
   forensics: [
     // { file: "memory-dump-mayhem.html", title: "Memory Dump Mayhem", tags: ["volatility"], date: "2026-04-01" },
   ],
-  web: [],
+  web: [
+    {
+      file: "encrypt-responsibly.html",
+      title: "Encrypt Responsibly",
+      tags: ["web", "crypto", "security"],
+      date: "2026-09-28",
+    }
+  ],
   osint: [
     {
       file: "case-of-the-overconfident-consultant.html",
