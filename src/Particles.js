@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useEffect } from "react";
 import { Particles, ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
@@ -9,14 +9,31 @@ const particlesInit = async (engine) => {
 const ParticleBackground = () => {
   const containerRef = useRef(null);
 
+  // ── BURST ON CLICK via window ──
+  useEffect(() => {
+  const handleClick = async (e) => {
+    // skip if clicking a link, button, or nav element
+    if (e.target.closest('a, button, nav, input, textarea, select')) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+    const dpr = window.devicePixelRatio || 1;
+    await container.particles.push(25, {
+      x: e.clientX * dpr,
+      y: e.clientY * dpr,
+    });
+  };
+
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, []);
+
   const options = useMemo(() => ({
-    background: {
-      color: { value: "#0a0f0d" },
-    },
+    background: { color: { value: "transparent" } },
     fpsLimit: 60,
     interactivity: {
       events: {
-        onClick: { enable: false }, // disabled — handled manually via ref
+        onClick: { enable: false },
         onHover: { enable: true, mode: "grab" },
       },
       modes: {
@@ -37,7 +54,7 @@ const ParticleBackground = () => {
         enable: true,
         outModes: { default: "bounce" },
         random: true,
-        speed: 1.5,
+        speed: 0.8,
         straight: false,
       },
       number: {
@@ -47,11 +64,7 @@ const ParticleBackground = () => {
       },
       opacity: {
         value: { min: 0.3, max: 0.9 },
-        animation: {
-          enable: true,
-          speed: 0.6,
-          minimumValue: 0.2,
-        },
+        animation: { enable: true, speed: 0.6, minimumValue: 0.2 },
       },
       shape: { type: "circle" },
       size: { value: { min: 1, max: 2.5 } },
@@ -63,22 +76,18 @@ const ParticleBackground = () => {
     containerRef.current = container;
   };
 
-const handleClick = async (e) => {
-  const container = containerRef.current;
-  if (!container) return;
-
-  const dpr = window.devicePixelRatio || 1;
-
-  const x = e.clientX * dpr;
-  const y = e.clientY * dpr;
-
-  await container.particles.push(10, { x, y });
-};
   return (
     <ParticlesProvider init={particlesInit}>
       <div
-        onClick={handleClick}
-        style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
       >
         <Particles
           id="tsparticles"
